@@ -1,0 +1,37 @@
+
+public class MyAnimalTest {
+
+	public static void main(String[] args) {
+		Bird1 bird = new Bird();
+		bird.beat();
+		bird.fly();
+		Wolf1 wolf = new Wolf();
+		wolf.beat();
+		wolf.run();
+	}
+
+}
+
+class Animal1{
+	
+	public void beat(){
+		System.out.println("heat jump");
+	}
+	
+}
+
+class Bird1 extends Animal1{
+	
+	public void fly(){
+		System.out.println("flying in the sky");
+	}
+}
+
+class Wolf1 extends Animal1{
+	
+	public void run(){
+		System.out.println("running in the filed");
+	}
+}
+
+

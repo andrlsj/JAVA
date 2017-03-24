@@ -1,0 +1,32 @@
+
+public class MyDog {
+
+	public void jump(){
+	
+		System.out.println("jump");
+	};
+	
+	public void run(){
+	
+		this.jump();
+		jump();
+		System.out.println("run");
+	
+	};
+	
+	public static void main(String[] args) {
+		
+		MyDog md = new MyDog();
+		md.run();
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+}

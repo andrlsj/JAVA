@@ -1,0 +1,15 @@
+
+public class Student {
+
+	int score=0;
+	
+	public void play(int hour){
+		score += 1;
+	}
+	
+	public void study(int hour){
+		score -= 1;
+	}
+	
+	
+}

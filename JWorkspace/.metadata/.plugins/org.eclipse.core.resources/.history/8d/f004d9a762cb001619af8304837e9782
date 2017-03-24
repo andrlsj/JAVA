@@ -1,0 +1,19 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class MyMapTest {
+	
+	public static void main(String[] args){
+		
+		Map map = new HashMap();
+		map.put("cat", 111);
+		map.put("dog", 101);
+		map.put("lion", 100);
+		map.put("tiger", 99);
+		
+		System.out.println(map.put("dog", 99)); //101
+		System.out.println(map);
+		
+		
+	}
+}

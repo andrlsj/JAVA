@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='utf-8'?>
+<quartz xmlns="http://www.opensymphony.com/quartz/JobSchedulingData"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.opensymphony.com/quartz/JobSchedulingData
+  http://www.opensymphony.com/quartz/xml/job_scheduling_data_1_5.xsd"
+	version="1.5">
+
+	<calendar class-name="org.quartz.impl.calendar.HolidayCalendar"
+		replace="true">
+		<name>holidayCalendar</name>
+		<description>HolidayCalendar</description>
+		<base-calendar class-name="org.quartz.impl.calendar.WeeklyCalendar">
+			<name>weeklyCalendar</name>
+			<description>WeeklyCalendar</description>
+			<base-calendar class-name="org.quartz.impl.calendar.AnnualCalendar">
+				<name>annualCalendar</name>
+				<description>AnnualCalendar</description>
+			</base-calendar>
+		</base-calendar>
+	</calendar>
+
+	<job>
+		<job-detail>
+			<name>Min5HttpDataReaderJob</name>
+			<group>Min5HttpDataReader</group>
+			<description>Min5HttpDataReaderJob</description>
+			<job-class>job.Min5HttpDataReaderJob</job-class>
+			<volatility>false</volatility>
+			<durability>false</durability>
+			<recover>false</recover>
+		</job-detail>
+
+		<trigger>
+			<cron>
+				<name>Min5HttpDataReaderTrigger</name>
+				<group>Min5HttpDataReader</group>
+				<description>Min5HttpDataReaderTrigger</description>
+				<job-name>Min5HttpDataReaderJob</job-name>
+				<job-group>Min5HttpDataReader</job-group>
+				<cron-expression>0 0/5 * ? * *</cron-expression>
+			</cron>
+		</trigger>
+	</job>
+	
+	<job>
+		<job-detail>
+			<name>Min10HttpDataReaderJob</name>
+			<group>Min10HttpDataReader</group>
+			<description>Min10HttpDataReaderJob</description>
+			<job-class>job.Min10HttpDataReaderJob</job-class>
+			<volatility>false</volatility>
+			<durability>false</durability>
+			<recover>false</recover>
+		</job-detail>
+
+		<trigger>
+			<cron>
+				<name>Min10HttpDataReaderTrigger</name>
+				<group>Min10HttpDataReader</group>
+				<description>Min10HttpDataReaderTrigger</description>
+				<job-name>Min10HttpDataReaderJob</job-name>
+				<job-group>Min10HttpDataReader</job-group>
+				<cron-expression>0 0/10 * ? * *</cron-expression>
+			</cron>
+		</trigger>
+	</job>
+	
+		<job>
+		<job-detail>
+			<name>Min15HttpDataReaderJob</name>
+			<group>Min15HttpDataReader</group>
+			<description>Min15HttpDataReaderJob</description>
+			<job-class>job.Min15HttpDataReaderJob</job-class>
+			<volatility>false</volatility>
+			<durability>false</durability>
+			<recover>false</recover>
+		</job-detail>
+
+		<trigger>
+			<cron>
+				<name>Min15HttpDataReaderTrigger</name>
+				<group>Min15HttpDataReader</group>
+				<description>Min15HttpDataReaderTrigger</description>
+				<job-name>Min15HttpDataReaderJob</job-name>
+				<job-group>Min15HttpDataReader</job-group>
+				<cron-expression>0 0/15 * ? * *</cron-expression>
+			</cron>
+		</trigger>
+	</job>
+	
+	<job>
+		<job-detail>
+			<name>Min30HttpDataReaderJob</name>
+			<group>Min30HttpDataReader</group>
+			<description>Min30HttpDataReaderJob</description>
+			<job-class>job.Min30HttpDataReaderJob</job-class>
+			<volatility>false</volatility>
+			<durability>false</durability>
+			<recover>false</recover>
+		</job-detail>
+
+		<trigger>
+			<cron>
+				<name>Min30HttpDataReaderTrigger</name>
+				<group>Min30HttpDataReader</group>
+				<description>Min30HttpDataReaderTrigger</description>
+				<job-name>Min30HttpDataReaderJob</job-name>
+				<job-group>Min30HttpDataReader</job-group>
+				<cron-expression>0 0/30 * ? * *</cron-expression>
+			</cron>
+		</trigger>
+	</job>
+	
+	<job>
+		<job-detail>
+			<name>Min30SecsHttpDataReaderJob</name>
+			<group>Min30SecsHttpDataReader</group>
+			<description>Min30SecsHttpDataReaderJob</description>
+			<job-class>job.Min30SecsHttpDataReaderJob</job-class>
+			<volatility>false</volatility>
+			<durability>false</durability>
+			<recover>false</recover>
+		</job-detail>
+
+		<trigger>
+			<cron>
+				<name>Min30SecsHttpDataReaderTrigger</name>
+				<group>Min30SecsHttpDataReader</group>
+				<description>Min30SecsHttpDataReaderTrigger</description>
+				<job-name>Min30SecsHttpDataReaderJob</job-name>
+				<job-group>Min30SecsHttpDataReader</job-group>
+				<cron-expression>0/30 * * ? * *</cron-expression>
+			</cron>
+		</trigger>
+	</job>
+	
+</quartz>

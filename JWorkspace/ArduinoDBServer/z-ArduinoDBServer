@@ -1,0 +1,25 @@
+#!/bin/bash
+# Provides: z-ArduinoDBServer
+# Required-Start: $network
+# Required-Stop: $network
+# Default-Start: 2 3 5
+# Description: Tomcat Java Application Server@80
+### END INIT INFO
+
+case "$1" in
+'start')
+        #JAVA_HOME=/usr/java/jdk1.6.0_41
+        #export JAVA_HOME
+        cd /opt/ArduinoDBServer
+	java -jar VDPServer.jar &
+	;;
+'stop')
+        #JAVA_HOME=/usr/java/jdk1.6.0_41
+        #export JAVA_HOME
+        curl http://192.168.4.161:400/leave
+	;;
+*)
+	echo "Usage: $0 { start | stop }"
+	;;
+esac
+exit 0

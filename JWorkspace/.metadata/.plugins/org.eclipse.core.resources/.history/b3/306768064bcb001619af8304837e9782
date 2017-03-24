@@ -1,0 +1,6 @@
+
+public enum MyGender {
+
+	MALE,FEMALE;
+	public String name;
+}

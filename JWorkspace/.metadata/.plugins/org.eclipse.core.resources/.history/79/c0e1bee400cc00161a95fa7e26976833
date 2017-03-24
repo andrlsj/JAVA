@@ -1,0 +1,30 @@
+
+public class Student {
+
+	int score=80;
+	
+	public void play(int hours){
+		
+		score = score - hours;
+		System.out.println("play" + hours + "hour" +快樂值 score: " + score);
+	}
+	
+	public void study(int hours){
+		score = score + hours;
+		System.out.println("快樂值 score: "+ score);
+	}
+	
+	public static void main(String[] args) {
+		
+		Student st = new Student();
+		st.play(3);
+		st.study(5);
+		
+		
+		
+	}
+	
+	
+	
+	
+}

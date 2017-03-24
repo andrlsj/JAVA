@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='utf-8'?>
+<quartz xmlns="http://www.opensymphony.com/quartz/JobSchedulingData"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.opensymphony.com/quartz/JobSchedulingData
+  http://www.opensymphony.com/quartz/xml/job_scheduling_data_1_5.xsd"
+	version="1.5">
+
+	<calendar class-name="org.quartz.impl.calendar.HolidayCalendar"
+		replace="true">
+		<name>holidayCalendar</name>
+		<description>HolidayCalendar</description>
+		<base-calendar class-name="org.quartz.impl.calendar.WeeklyCalendar">
+			<name>weeklyCalendar</name>
+			<description>WeeklyCalendar</description>
+			<base-calendar class-name="org.quartz.impl.calendar.AnnualCalendar">
+				<name>annualCalendar</name>
+				<description>AnnualCalendar</description>
+			</base-calendar>
+		</base-calendar>
+	</calendar>
+
+	<job>
+		<job-detail>
+			<name>ResetDBConnectionJob</name>
+			<group>ResetDBConnection</group>
+			<description>ResetDBConnectionJob</description>
+			<job-class>job.ResetDBConnectionJob</job-class>
+			<volatility>false</volatility>
+			<durability>false</durability>
+			<recover>false</recover>
+		</job-detail>
+
+		<trigger>
+			<cron>
+				<name>ResetDBConnectionTrigger</name>
+				<group>ResetDBConnection</group>
+				<description>ResetDBConnectionTrigger</description>
+				<job-name>ResetDBConnectionJob</job-name>
+				<job-group>ResetDBConnection</job-group>
+				<cron-expression>0 4 0 ? * *</cron-expression>
+			</cron>
+		</trigger>
+	</job>
+	<job>
+		<job-detail>
+			<name>SyncDeviceListJob</name>
+			<group>SyncDeviceList</group>
+			<description>SyncDeviceListJob</description>
+			<job-class>job.SyncDeviceListJob</job-class>
+			<volatility>false</volatility>
+			<durability>false</durability>
+			<recover>false</recover>
+		</job-detail>
+
+		<trigger>
+			<cron>
+				<name>SyncDeviceListJobTrigger</name>
+				<group>SyncDeviceList</group>
+				<description>SyncDeviceListJobTrigger</description>
+				<job-name>SyncDeviceList</job-name>
+				<job-group>SyncDeviceListJob</job-group>
+				<cron-expression>0 16 0 ? * *</cron-expression>
+			</cron>
+		</trigger>
+	</job>
+	
+	<job>
+		<job-detail>
+			<name>CreateDayReportsJob</name>
+			<group>CreateDayReports</group>
+			<description>CreateDayReportsJob</description>
+			<job-class>job.CreateDayReportsJob</job-class>
+			<volatility>false</volatility>
+			<durability>false</durability>
+			<recover>false</recover>
+		</job-detail>
+
+ 		<trigger>
+			<cron>
+				<name>CreateDayReportsTrigger</name>
+				<group>CreateDayReports</group>
+				<description>CreateDayReportsTrigger</description>
+				<job-name>CreateDayReportsJob</job-name>
+				<job-group>CreateDayReports</job-group>
+				<cron-expression>0 6 8 ? * *</cron-expression>
+			</cron>
+		</trigger>
+	</job>
+</quartz>

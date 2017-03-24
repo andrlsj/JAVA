@@ -1,0 +1,22 @@
+package testJava_1;
+
+class Super{
+	private int a;
+	protected Super(int a){
+		this.a= a;
+	}
+	
+}
+
+
+public class sub {
+
+	public Sub(int a){
+		super(a);
+	}
+	
+	public Sub(){
+		this(5);
+	}
+	
+}

@@ -1,0 +1,19 @@
+
+public class MyTestOverLoading {
+	
+	public static double areaMeasure(double radius){
+		return Math.pow(radius, 2);
+	}
+	
+	public static double areaMeasure(double height,double width){
+		return height * width;
+	}
+	
+	public static double areaMeasure(double upper,double bottom,double height){
+		return (upper + bottom) * height / 2;
+	}
+	
+	
+	
+
+}

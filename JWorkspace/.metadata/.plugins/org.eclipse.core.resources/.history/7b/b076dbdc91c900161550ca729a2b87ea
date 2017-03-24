@@ -1,0 +1,14 @@
+
+public class MyPassArgs {
+
+	static void passValue(double value){
+		value = 20.0;
+	}
+	
+	static void passReference(Pen reference){
+		reference.price = 20.0;
+	}
+	
+	
+	
+}

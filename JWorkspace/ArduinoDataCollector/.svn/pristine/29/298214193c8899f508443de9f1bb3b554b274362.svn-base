@@ -1,0 +1,21 @@
+#!/bin/bash
+# Provides: z-ArduinoDataCollector
+# Required-Start: $network
+# Required-Stop: $network
+# Default-Start: 2 3 5
+# Description: Tomcat Java Application Server@80
+### END INIT INFO
+
+case "$1" in
+'start')
+        cd /opt/ArduinoDataCollector
+	java -jar ArduinoDataCollector.jar &
+	;;
+'stop')
+        curl http://192.168.4.162:502/leave
+	;;
+*)
+	echo "Usage: $0 { start | stop }"
+	;;
+esac
+exit 0

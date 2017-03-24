@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TemperatureHumidity" language="groovy" pageWidth="842" pageHeight="380" orientation="Landscape" columnWidth="842" leftMargin="0" rightMargin="0" topMargin="20" bottomMargin="0" uuid="f58564cb-3732-4e5b-8ad2-dc905a68024c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="ireport.callouts" value="##Wed Mar 16 15:32:37 CST 2016"/>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<parameter name="STM" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{ReportDate}]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ETM" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ReportDate" class="java.lang.String">
+		<parameterDescription><![CDATA[2016.03.16]]></parameterDescription>
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select a.snc02_01 device_name, a.snc02_03 temperature, b.snc02_03 humidity,substr(a.snc02_04, 12, 2) tm
+from (
+select * from snc02 where snc02_01 = 'CZF0001' AND snc02_04 between $P{STM} and $P{ETM} and snc02_02 = 'T22'
+) a,
+(
+select * from snc02 where snc02_01 = 'CZF0001' AND snc02_04 between $P{STM} and $P{ETM} and snc02_02 = 'H22'
+) b
+where substr(a.snc02_04, 1, 16) = substr(b.snc02_04, 1, 16)
+and substr(a.snc02_04, 15, 2)='00']]>
+	</queryString>
+	<field name="DEVICE_NAME" class="java.lang.String"/>
+	<field name="TEMPERATURE" class="java.math.BigDecimal"/>
+	<field name="HUMIDITY" class="java.math.BigDecimal"/>
+	<field name="TM" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="89" splitType="Stretch">
+			<image>
+				<reportElement x="24" y="7" width="127" height="34" uuid="2c4fd45b-b822-41ac-ab75-06e1c52121db"/>
+				<imageExpression><![CDATA[".\\CymMetrik.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="413" y="0" width="155" height="29" uuid="07b8ee8f-29bc-47ad-b9b5-b573c08d9e77"/>
+				<textElement textAlignment="Center">
+					<font fontName="標楷體" size="18" isBold="true" pdfEncoding="Cp1257" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[溫濕度日趨勢圖]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="253" y="1" width="188" height="28" uuid="329f1066-9d88-400f-8898-67ce64f7c036"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="標楷體" size="18" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ReportDate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="652" y="23" width="90" height="34" uuid="adc18727-8628-45e0-b494-2691954bde64"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="標楷體" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[4F網版車間]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="251" splitType="Immediate">
+			<lineChart>
+				<chart>
+					<reportElement isPrintRepeatedValues="false" x="24" y="3" width="766" height="246" forecolor="#000000" uuid="56512e8d-b29f-4299-ab2f-379c99bc6182"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["溫度℃"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{TM}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{TEMPERATURE}]]></valueExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["濕度%"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{TM}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{HUMIDITY}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<linePlot>
+					<plot/>
+					<categoryAxisFormat>
+						<axisFormat>
+							<labelFont>
+								<font size="14"/>
+							</labelFont>
+						</axisFormat>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat>
+							<tickLabelFont>
+								<font size="14"/>
+							</tickLabelFont>
+						</axisFormat>
+					</valueAxisFormat>
+				</linePlot>
+			</lineChart>
+			<staticText>
+				<reportElement x="737" y="188" width="52" height="38" uuid="30825d59-3d2c-40bd-996f-c46a2e88ba26"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="標楷體" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[小時]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

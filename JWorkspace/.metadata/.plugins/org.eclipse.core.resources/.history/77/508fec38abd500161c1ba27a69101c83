@@ -1,0 +1,23 @@
+class BaseClass{
+	
+	public int book = 6;
+	public void base() {
+		System.out.println("父類普通方法");
+	}
+	
+	public void test() {
+		System.out.println("父類被覆蓋的方法");
+	}
+	
+}
+
+public class MySubClass2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		public String booko
+		
+		
+	}
+
+}

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PM2.5" language="groovy" pageWidth="842" pageHeight="380" orientation="Landscape" columnWidth="842" leftMargin="0" rightMargin="0" topMargin="20" bottomMargin="0" uuid="82731d8d-97f5-4bff-b96c-61c9fd285a3f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="STM" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ETM" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ReportDate" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select snc02_01 device_name,snc02_03 PM_Value,substr(snc02_04, 12, 2) tm from snc02 where snc02_01 = 'CZF0002' AND snc02_04  between $P{STM} and $P{ETM} and snc02_02 = 'PM2.5' and substr(snc02_04, 15, 2)='00']]>
+	</queryString>
+	<field name="DEVICE_NAME" class="java.lang.String"/>
+	<field name="PM_VALUE" class="java.math.BigDecimal"/>
+	<field name="TM" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="89" splitType="Stretch">
+			<staticText>
+				<reportElement x="647" y="33" width="90" height="34" uuid="04321880-e33c-43ca-818e-88cb5dfb9c9e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="標楷體" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[4F網版車間]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="419" y="10" width="155" height="29" uuid="5e90e78e-bff8-466f-8a81-6a8cd19f3eb4"/>
+				<textElement textAlignment="Center">
+					<font fontName="標楷體" size="18" isBold="true" pdfEncoding="Cp1257" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[PM2.5日趨勢圖]]></text>
+			</staticText>
+			<image>
+				<reportElement x="16" y="17" width="127" height="34" uuid="05ad94b9-ec68-46c5-b0c4-5f109f102002"/>
+				<imageExpression><![CDATA[".\\CymMetrik.jpg"]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="263" y="11" width="188" height="28" uuid="c2215067-5cf8-4f9a-8fd6-339f1099766d"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="標楷體" size="18" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ReportDate}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="251" splitType="Stretch">
+			<lineChart>
+				<chart>
+					<reportElement isPrintRepeatedValues="false" x="34" y="3" width="766" height="246" forecolor="#000000" uuid="f9e7bd64-dfcc-4702-8424-f05ce1f74ed4"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["PM2.5 優(0-50) 良(51-100) 輕度污染(101 up)"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{TM}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{PM_VALUE}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<linePlot>
+					<plot/>
+					<categoryAxisFormat>
+						<axisFormat>
+							<labelFont>
+								<font size="14"/>
+							</labelFont>
+						</axisFormat>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat>
+							<tickLabelFont>
+								<font size="14"/>
+							</tickLabelFont>
+						</axisFormat>
+					</valueAxisFormat>
+				</linePlot>
+			</lineChart>
+			<staticText>
+				<reportElement x="747" y="187" width="52" height="38" uuid="5dfa6276-7330-4a52-859e-5aa6cbc17dcf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="標楷體" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[小時]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

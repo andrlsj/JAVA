@@ -1,0 +1,14 @@
+
+public class TestCaculatortest {
+	
+	public static void main(String[] args){
+		
+		Caculatortest mycac = new Caculatortest();
+		int sum1 = mycac.sum(1, 2);
+		System.out.println(sum1);
+		
+		
+	}
+	
+
+}

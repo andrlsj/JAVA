@@ -1,0 +1,46 @@
+
+public class InheritTest {
+	
+	private void beat(){
+		System.out.println("心跳");
+	}
+	
+	public void breath(){
+		
+		System.out.println("呼吸");
+	}
+}	
+	class Bird extends InheritTest{
+		
+		public void fly(){
+			System.out.println("飛行");
+		}
+		
+	}
+	
+	class Wolf extends InheritTest{
+		
+		public void run(){
+			System.out.println("快跑");
+		}
+		
+	}
+	
+	public class Inherittest{
+		
+		public static void main(String[] args) {
+			
+			Bird b = new Bird();
+			b.breath();
+			b.fly();
+			
+			Wolf c = new Wolf();
+			c.breath();
+			c.run();
+						
+		}
+		
+	}
+	
+
+

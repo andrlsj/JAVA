@@ -1,0 +1,67 @@
+
+public class HomeWork1221_01 {
+
+	public static void main(String[] args) {
+		//請設計一隻Java程式,計算12,6這兩個數值的和與積
+		int a = 12;
+		int b = 6;
+		System.out.println(a+b);
+		System.out.println(a*b);
+		System.out.println("===========================");
+		//請設計一隻Java程式,計算200顆蛋共是幾打幾顆? (一打為12顆)
+		int eggNumber = 200;
+		int dozen = eggNumber/12;
+		int xb = eggNumber %12;
+		System.out.println(dozen);
+		System.out.println(xb);
+		System.out.println("===========================");
+		//請由程式算出256559秒為多少天、多少小時、多少分與多少秒
+		//一天24小時 /一小時60分/一分60秒
+		//2 天 23 小时 15 分 59 秒
+		
+		int totalSec =  256559;
+		
+	    int ss = totalSec % 60; //sec 
+        int mm = (totalSec / 60) % 60;//min
+        
+        int hh = (totalSec %(24*60*60))/3600; //hour
+		int dd = totalSec /(24*60*60);//day 2
+		
+		System.out.println(dd);
+		System.out.println(hh);
+		System.out.println(mm);
+		System.out.println(ss);
+		
+		System.out.println("===========================");
+		//請定義一個常數為3.1415(圓周率),並計算半徑為5的圓面積與圓周長
+		final double PI = 3.1415;
+		int radius = 5;
+		double perimeter = radius*2*PI;
+		double area = Math.sqrt(radius)*PI;
+		System.out.println("===========================");
+		
+		//某人在銀行存入150萬,銀行利率為2%,如果每年利息都繼續存入銀行,
+		//請用程式計算10年後,本金加利息共有多少錢 (if by month)
+		//複利：本利和＝本金 × ( 1 + 年利率 ÷ 12 )期數
+		//182849.16
+		int saveMoney = 1_500_000;
+		double ratio = 0.02;
+		double sum;
+		
+		sum = saveMoney * Math.pow((1 + ratio/12), 10);
+		System.out.println("===========================");
+		/*請寫一隻程式,利用System.out.println()印出以下三個運算式結果:
+		5 + 5
+		5 + "5"
+		5 + “5”
+		並請用註解各別說明答案的產生原因*/
+		
+		System.out.println(5+5); //5+5=10
+		System.out.println(5 + '5');//'5'->53 ; 5+53=58
+		System.out.println(5 + "5");//"5"->String =>55
+		
+		
+		
+	}
+
+}
